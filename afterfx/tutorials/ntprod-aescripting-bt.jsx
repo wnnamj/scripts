@@ -1,4 +1,5 @@
 // np productions - ae scripting beginners tutorial [2022]
+// link to original video: https://youtu.be/DTBtfFiyjNU?si=dovIPzF_yKU7MUM1
 
 var myWindow = new Window("palette", "My Window", undefined);
 myWindow.orientation = "column";
