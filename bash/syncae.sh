@@ -37,7 +37,6 @@ find $aeRepo/ $aePrefLocal/ $aePrefRepo/ -name '*.DS*'
 find $aeRepo/ $aePrefLocal/ $aePrefRepo/ -name '*.DS*' -delete
 find $aeRepo/ $aePrefLocal/ $aePrefRepo/ -name '*.log*'
 find $aeRepo/ $aePrefLocal/ $aePrefRepo/ -name '*.log*' -delete
-
 printf "\nclean up complete!\n"
 
 # complete
