@@ -32,9 +32,11 @@ var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group"
 
 // add shape properties
 
-var pathGroup = shapeLayer.property("Contents").property("▣ altNull").property("Contents").addProperty("ADBE Vector Shape - Rect")
-var strokeGroup = shapeLayer.property("Contents").property("▣ altNull").property("Contents").addProperty("ADBE Vector Graphic - Stroke")
+var pathGroup = shapeLayer.property("Contents").property("▣ altNull").property("Contents").addProperty("ADBE Vector Shape - Rect");
 
+// stroke
 
+var strokeGroup = shapeLayer.property("Contents").property("▣ altNull").property("Contents").addProperty("ADBE Vector Graphic - Stroke");
+    strokeGroup.property("ADBE Vector Stroke Width").setValue(1);
 
 app.endUndoGroup();
