@@ -19,7 +19,7 @@ function newAltNull() {
     var comp = app.project.activeItem;
     var nullName = "▣ altNull"
 
-    var selectedLayer = comp.selectedLayers[0];  
+    var selectedLayer = comp.selectedLayers[0];
     var layerName = selectedLayer.name;
 
 
@@ -54,7 +54,6 @@ function newAltNull() {
 
     var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
         strokeGroupDash.setValue(5);
-
     
     app.endUndoGroup();
 }
