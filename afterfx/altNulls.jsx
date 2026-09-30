@@ -4,10 +4,10 @@ author: jesse mann <jmann.design>
 name: altNulls
 description: a shape layer alternative to native ae nulls.
 
-written for adobe after effects cc 2026 (version 26.3.0 build 87)
+written for adobe after effects cc 2026 (version 26.5.0 build 89)
 
-license: This script is provided "as is," without warranty of any kind, expressed or implied.
--------- In no event shall the author be held liable for any damages arising in any way from the use of this script.
+license: this script is provided "as is," without warranty of any kind, expressed or implied.
+-------- in no event shall the author be held liable for any damages arising in any way from the use of this script.
 
 */
 
@@ -19,6 +19,10 @@ function newAltNull() {
     var comp = app.project.activeItem;
     var nullName = "▣ altNull"
 
+    var selectedLayer = comp.selectedLayers[0];  
+    var layerName = selectedLayer.name;
+
+
     if(comp == null) {
         alert("please select a layer in a comp!");
         return;
@@ -29,7 +33,7 @@ function newAltNull() {
     // generate shape layer
 
     var shapeLayer = comp.layers.addShape();
-        shapeLayer.name = nullName + "-"
+        shapeLayer.name = nullName + "-" + layerName
         shapeLayer.guideLayer = true;
         shapeLayer.shy = true;
         shapeLayer.label = 14;
@@ -50,6 +54,7 @@ function newAltNull() {
 
     var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
         strokeGroupDash.setValue(5);
+
     
     app.endUndoGroup();
 }
