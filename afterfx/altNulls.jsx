@@ -21,6 +21,7 @@ function newAltNull() {
 
     if(comp == null) {
         alert("please select a layer in a comp!");
+        return;
     }
 
     comp.openInViewer();
