@@ -63,24 +63,3 @@ function newAltNull() {
 }
 
 newAltNull()
-
-/*
-
-
-
-
-
-var myDashes = app.project.activeItem.layer("Shape Layer 1").property("ADBE Root Vectors Group").property("ADBE Vector Group").property("ADBE Vectors Group").property("ADBE Vector Graphic - Stroke").property("ADBE Vector Stroke Dashes");
-var myDash = myDashes.addProperty("ADBE Vector Stroke Dash 1");
-    myDash.setValue(10);
-
-var myGap = myDashes.addProperty("ADBE Vector Stroke Gap 1");
-    myGap.setValue(5);
-
-
-
-
-
-
-
-*/
