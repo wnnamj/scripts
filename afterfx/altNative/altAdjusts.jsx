@@ -42,7 +42,7 @@ function newAltAdjust() {
 
         var pathGroup = shapeLayer.property("Contents").property(adjustName).property("Contents").addProperty("ADBE Vector Shape - Rect");
         var pathGroupGroup = pathGroup.property("ADBE Vector Rect Size");
-        pathGroupGroup.expression = "[thisComp.width, thisComp.height]";
+            pathGroupGroup.expression = "[thisComp.width, thisComp.height]";
 
     }
 
