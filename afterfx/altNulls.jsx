@@ -17,7 +17,7 @@ function newAltNull() {
 
     var project = app.project;
     var comp = app.project.activeItem;
-    var nullName = "▣ altNull"
+    var nullName = "\u25a3 altNull"
 
     var selectedLayer = comp.selectedLayers[0];
     var layerName = selectedLayer.name;
@@ -26,36 +26,46 @@ function newAltNull() {
     if(comp == null) {
         alert("please select a layer in a comp!");
         return;
+    } else {
+
+        comp.openInViewer();
+
+        // generate shape layer
+
+        var shapeLayer = comp.layers.addShape();
+            shapeLayer.name = nullName + "-" + layerName
+            shapeLayer.guideLayer = true;
+            shapeLayer.shy = true;
+            shapeLayer.label = 14;
+
+        var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
+            shapeGroup.name = nullName;
+
+        // add shape properties
+
+        var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
+
+        // stroke
+
+        var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
+        var stroke = strokeGroup.property("ADBE Vector Stroke Width");
+            stroke.setValue(1);
+            stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
+
+        var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
+            strokeGroupDash.setValue(5);
+
+        // parent selected layers
+
+        selectedLayer.parent = shapeLayer;
+
+        // reveal reveal properties with keyframes (none so it collapses)
+
+        app.executeCommand(2387);
+
+        app.endUndoGroup();
     }
 
-    comp.openInViewer();
-
-    // generate shape layer
-
-    var shapeLayer = comp.layers.addShape();
-        shapeLayer.name = nullName + "-" + layerName
-        shapeLayer.guideLayer = true;
-        shapeLayer.shy = true;
-        shapeLayer.label = 14;
-
-    var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
-        shapeGroup.name = nullName;
-
-    // add shape properties
-
-    var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
-
-    // stroke
-
-    var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
-    var stroke = strokeGroup.property("ADBE Vector Stroke Width");
-        stroke.setValue(1);
-        stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
-
-    var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
-        strokeGroupDash.setValue(5);
-    
-    app.endUndoGroup();
 }
 
 newAltNull()
