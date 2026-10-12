@@ -19,6 +19,10 @@ function newAltSolid() {
 	var comp = app.project.activeItem;
 	var solidName = "\u25c8 altSolid"
 
+    var r = 237 / 255;
+    var g = 109 / 255;
+    var b = 122 / 255;
+
 	if (comp == null) {
 		alert("Please select a comp!");
 		return;
@@ -43,7 +47,7 @@ function newAltSolid() {
             pathGroup.expression = "[thisComp.width, thisComp.height]";
 
 		var fill = contents.addProperty("ADBE Vector Graphic - Fill");
-            fill.property("ADBE Vector Fill Color").setValue([1, 0, 0]);
+            fill.property("ADBE Vector Fill Color").setValue([r, g, b]);
             fill.property("ADBE Vector Fill Opacity").setValue(100);
 
 		// cancel out properties expansion
