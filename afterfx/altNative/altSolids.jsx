@@ -59,3 +59,5 @@ function newAltSolid() {
 	app.endUndoGroup();
 
 }
+
+newAltSolid();
