@@ -22,9 +22,12 @@ function newAltNull() {
     var selectedLayer = comp.selectedLayers[0];
     var layerName = selectedLayer.name;
 
+    var r = 237 / 255;
+    var g = 109 / 255;
+    var b = 122 / 255;
 
     if(comp == null) {
-        alert("please select a layer in a comp!");
+        alert("Please select a in a comp!");
         return;
     } else {
 
@@ -45,12 +48,17 @@ function newAltNull() {
 
         var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
 
-        // stroke
+        // stroke properties
 
         var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
+
+        var strokeCol = strokeGroup.property("ADBE Vector Stroke Color");
+            strokeCol.setValue([r, g, b]);
+        
         var stroke = strokeGroup.property("ADBE Vector Stroke Width");
             stroke.setValue(1);
             stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
+
 
         var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
             strokeGroupDash.setValue(5);
@@ -59,7 +67,7 @@ function newAltNull() {
 
         selectedLayer.parent = shapeLayer;
 
-        // reveal reveal properties with keyframes (none so it collapses)
+		// cancel out properties expansion
 
         app.executeCommand(2387);
 
