@@ -1,11 +1,12 @@
 # After Effects Scripts
 
 A collection of After Effects scripts made by me ([@jmann.design](https://www.instagram.com/jmann.design/)).
-All scripts are commented to make every step clear.
+All scripts are commented to make every step clear. Some scripts may also require an accompanying preset which
+is placed alongside
 
 ---
 
-## Where to place the scripts
+## Installation Paths
 
 Download and place the script file into the After Effects script directory
 
@@ -13,28 +14,60 @@ Download and place the script file into the After Effects script directory
 
 #### Scripts
 
-```
-C:\Program Files\Adobe\Adobe After Effects 2022\Support Files\Scripts
-```
-
-#### ScriptUI panels
+##### Headless/floating
 
 ```
-C:\Program Files\Adobe\Adobe After Effects 2022\Support Files\Scripts\ScriptUI Panels
+C:\Program Files\Adobe\Adobe After Effects [Year]\Support Files\Scripts
+```
+
+##### ScriptUI panels
+
+```
+C:\Program Files\Adobe\Adobe After Effects [Year]\Support Files\Scripts\ScriptUI Panels
+```
+
+#### Presets
+
+##### Default Presets
+
+```
+C:\Program Files\Adobe\Adobe After Effects [Year]\Support Files\Presets
+```
+
+##### User Presets
+
+```
+\Documents\Adobe\After Effects [Year]\User Presets
 ```
 
 ### MacOs
 
 #### Scripts
 
-```
-/Applications/Adobe After Effects 2026/Scripts
-```
-
-#### ScriptUI panels
+##### Headless/floating
 
 ```
-/Applications/Adobe After Effects 2026/Scripts/ScriptUI Panels
+/Applications/Adobe After Effects [Year]/Scripts
+```
+
+##### ScriptUI panels
+
+```
+/Applications/Adobe After Effects [Year]/Scripts/ScriptUI Panels
+```
+
+#### Presets
+
+##### Default Presets
+
+```
+/Applications/Adobe After Effects [Year]/Presets
+```
+
+##### User Presets
+
+```
+~/Documents/Adobe/After Effects [Year]/User Presets
 ```
 
 ## How to use the scripts
