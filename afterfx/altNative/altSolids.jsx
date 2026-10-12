@@ -58,6 +58,3 @@ function newAltSolid() {
 }
 
 newAltSolid()
-
-
-
