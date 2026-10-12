@@ -19,11 +19,10 @@ function newAltAdjust() {
     var comp = app.project.activeItem;
     var adjustName = "\u25c9 altAdjust"
 
-    if(comp == null) {
+    if (comp == null) {
         alert("Please select a comp!");
         return;
     } else {
-
         comp.openInViewer();
 
         // generate shape layer
@@ -38,17 +37,17 @@ function newAltAdjust() {
             shapeGroup.name = adjustName;
         
         // add shape properties
-
+        
         var contents = shapeLayer.property("Contents").property(adjustName).property("Contents");
         var adjustRect = contents.addProperty("ADBE Vector Shape - Rect");
             pathGroup = adjustRect.property("ADBE Vector Rect Size");
             pathGroup.expression = "[thisComp.width, thisComp.height]";
 
         var fill = contents.addProperty("ADBE Vector Graphic - Fill");
-
     }
 
         app.endUndoGroup();
+
 }
 
-newAltAdjust()
+newAltAdjust();
