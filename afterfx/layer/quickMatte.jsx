@@ -37,7 +37,7 @@ function matteLayer() {
         var matteGroup = comp.layer(1).property("ADBE Root Vectors Group").property(1);
             matteGroup.name = matteName;
 
-        var matteFill = matteGroup.property("ADBE Vectors Group").property(2).property("ADBE Vector Fill Color");
+        var matteFill = matteGroup.property("ADBE Vectors Group").property(3).property("ADBE Vector Fill Color");
             matteFill.setValue([r, g, b]);
 
     }
@@ -53,6 +53,7 @@ function matteLayer() {
     }
 
     app.endUndoGroup();
+
 }
 
 matteLayer();
