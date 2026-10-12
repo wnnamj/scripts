@@ -35,9 +35,9 @@ function newAltAdjust() {
 
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
             shapeGroup.name = adjustName;
-        
+
         // add shape properties
-        
+
         var contents = shapeLayer.property("Contents").property(adjustName).property("Contents");
         var adjustRect = contents.addProperty("ADBE Vector Shape - Rect");
             pathGroup = adjustRect.property("ADBE Vector Rect Size");
@@ -46,7 +46,7 @@ function newAltAdjust() {
         var fill = contents.addProperty("ADBE Vector Graphic - Fill");
     }
 
-        app.endUndoGroup();
+    app.endUndoGroup();
 
 }
 
