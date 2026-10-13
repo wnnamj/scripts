@@ -2,13 +2,15 @@
 
 A collection of After Effects scripts made by me ([@jmann.design](https://www.instagram.com/jmann.design/)).
 All scripts are commented to make every step clear.
-Some scripts may also require an accompanying preset (.ffx file).
+Some scripts may also require an accompanying preset file.
+
+Preset extension: `.ffx`
 
 ---
 
 ## Installation Paths
 
-Download and place the script file into the After Effects script directory
+Download and place the corresponding file into the correct After Effects directory.
 
 ### Windows
 
