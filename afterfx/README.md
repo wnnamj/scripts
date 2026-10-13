@@ -1,8 +1,8 @@
 # After Effects Scripts
 
 A collection of After Effects scripts made by me ([@jmann.design](https://www.instagram.com/jmann.design/)).
-All scripts are commented to make every step clear. Some scripts may also require an accompanying preset which
-is placed alongside
+All scripts are commented to make every step clear.
+Some scripts may also require an accompanying preset (.ffx file).
 
 ---
 
