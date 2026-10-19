@@ -44,9 +44,20 @@ function newAltNull() {
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
             shapeGroup.name = nullName;
 
+        // add null controls
+
         // add shape properties
 
         var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
+
+        var nullSize = pathGroup.property("ADBE Vector Rect Size");
+            nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
+
+        var nullPos = pathGroup.property("ADBE Vector Rect Position");
+            nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
+
+        var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
+            nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
 
         // stroke properties
 
@@ -58,7 +69,6 @@ function newAltNull() {
         var stroke = strokeGroup.property("ADBE Vector Stroke Width");
             stroke.setValue(1);
             stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
-
 
         var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
             strokeGroupDash.setValue(5);
