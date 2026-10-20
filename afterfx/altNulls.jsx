@@ -67,11 +67,11 @@ function newAltNull() {
             strokeCol.setValue([r, g, b]);
         
         var stroke = strokeGroup.property("ADBE Vector Stroke Width");
-            stroke.setValue(1);
+            stroke.setValue(3);
             stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
 
         var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
-            strokeGroupDash.setValue(5);
+            strokeGroupDash.setValue(7);
 
         // parent selected layers
 
