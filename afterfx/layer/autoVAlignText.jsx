@@ -22,13 +22,6 @@ function vAlignText() {
     var anchor = layer.transform.anchorPoint;
         anchor.expression = "var a = thisLayer.sourceRectAtTime();\nvar h = a.height;\nvar w = a.width;\nvar t = a.top;\nvar l = a.left;\r\rvar x = l + w / 2;\nvar y = t + h / 2;\r\r[x, y];";
 
-    var position = layer.transform.position
-
-    if (position.isSeparationLeader && position.dimensionsSeparated) {  
-        position.dimensionsSeparated = false;
-        position.expression = "[thisComp.width / 2, thisComp.height / 2];"
-    }
- 
     app.endUndoGroup();
 
 }
