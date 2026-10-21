@@ -41,6 +41,8 @@ function newAltNull() {
             shapeLayer.shy = true;
             shapeLayer.label = 14;
 
+        shapeLayer.moveBefore(selectedLayer);
+
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
             shapeGroup.name = nullName;
 
