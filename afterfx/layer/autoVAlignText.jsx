@@ -1,7 +1,7 @@
 /*
 
 author: jesse mann <jmann.design>
-name: altNulls
+name: vAlignText
 description: automatically align text vertically.
 
 written for adobe after effects cc 2026 (version 26.5.0 build 89)
