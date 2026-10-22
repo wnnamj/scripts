@@ -30,7 +30,7 @@ function newAltNull() {
     } else {
         comp.openInViewer();
 
-        function createAltNull (nullLayerName, nullPosValue) {
+        function createAltNull (nullLayerName, nullPosValue, nullInPoint, nullOutPoint) {
             var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");
 
             var shapeLayer = comp.layers.addShape();
@@ -40,6 +40,8 @@ function newAltNull() {
                 shapeLayer.label = 14;
                 shapeLayer.applyPreset(nullCtrlFFX);
                 shapeLayer.property("Transform").property("Position").setValue(nullPosValue);
+                shapeLayer.inPoint = nullInPoint;
+                shapeLayer.outPoint = nullOutPoint;
 
             var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
                 shapeGroup.name = nullName;
@@ -61,7 +63,7 @@ function newAltNull() {
             var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
 
             var strokeCol = strokeGroup.property("ADBE Vector Stroke Color");
-               strokeCol.setValue([r, g, b]);
+                strokeCol.setValue([r, g, b]);
             
             var stroke = strokeGroup.property("ADBE Vector Stroke Width");
                 stroke.setValue(3);
@@ -74,16 +76,13 @@ function newAltNull() {
         }
 
         if (comp.selectedLayers.length === 0) {
-            // not selected
             var compCenter = [comp.width / 2, comp.height / 2];
 
-            createAltNull(nullName, compCenter);
-            // shapeLayer.moveToBeginning()
+            createAltNull(nullName, compCenter, 0, comp.duration);
         } else {
-            // selected
             var nullPos = selectedLayer[0].property("Transform").property("Position").value;
             var selLayerNull = nullName + "-" + selectedLayer[0].name;
-            createAltNull(selLayerNull, nullPos);
+            createAltNull(selLayerNull, nullPos, selectedLayer[0].inPoint, selectedLayer[0].outPoint);
         }
     }
     app.endUndoGroup();
