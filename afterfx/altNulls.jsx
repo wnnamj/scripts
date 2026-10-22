@@ -44,6 +44,8 @@ function newAltNull() {
             shapeLayer.label = 14;
             shapeLayer.moveBefore(selectedLayer);
             shapeLayer.property("Transform").property("Position").setValue(nullPos);
+            shapeLayer.inPoint = selectedLayer.inPoint;
+            shapeLayer.outPoint = selectedLayer.outPoint;
 
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
             shapeGroup.name = nullName;
