@@ -35,13 +35,15 @@ function newAltNull() {
 
         // generate shape layer
 
+        var nullPos = selectedLayer.property("Transform").property("Position").value;
+
         var shapeLayer = comp.layers.addShape();
             shapeLayer.name = nullName + "-" + layerName
             shapeLayer.guideLayer = true;
             shapeLayer.shy = true;
             shapeLayer.label = 14;
-
-        shapeLayer.moveBefore(selectedLayer);
+            shapeLayer.moveBefore(selectedLayer);
+            shapeLayer.property("Transform").property("Position").setValue(nullPos);
 
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
             shapeGroup.name = nullName;
@@ -56,7 +58,7 @@ function newAltNull() {
             nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
 
         var nullPos = pathGroup.property("ADBE Vector Rect Position");
-            nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
+           nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
 
         var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
             nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
