@@ -17,7 +17,7 @@ function newAltNull() {
 
     var project = app.project;
     var comp = app.project.activeItem;
-    var nullName = "\u25a3 altNull"
+    var nullName = "\u25a3 altNull";
 
     var selectedLayer = comp.selectedLayers[0];
     var layerName = selectedLayer.name;
@@ -38,7 +38,7 @@ function newAltNull() {
         var nullPos = selectedLayer.property("Transform").property("Position").value;
 
         var shapeLayer = comp.layers.addShape();
-            shapeLayer.name = nullName + "-" + layerName
+            shapeLayer.name = nullName + "-" + layerName;
             shapeLayer.guideLayer = true;
             shapeLayer.shy = true;
             shapeLayer.label = 14;
@@ -47,7 +47,7 @@ function newAltNull() {
             shapeLayer.inPoint = selectedLayer.inPoint;
             shapeLayer.outPoint = selectedLayer.outPoint;
 
-        var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group")
+        var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
             shapeGroup.name = nullName;
 
         // add null controls
@@ -60,7 +60,7 @@ function newAltNull() {
             nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
 
         var nullPos = pathGroup.property("ADBE Vector Rect Position");
-           nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
+            nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
 
         var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
             nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
