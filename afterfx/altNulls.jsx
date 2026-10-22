@@ -22,6 +22,8 @@ function newAltNull() {
     var selectedLayer = comp.selectedLayers[0];
     var layerName = selectedLayer.name;
 
+    var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");  
+
     var r = 237 / 255;
     var g = 109 / 255;
     var b = 122 / 255;
@@ -46,6 +48,7 @@ function newAltNull() {
             shapeLayer.property("Transform").property("Position").setValue(nullPos);
             shapeLayer.inPoint = selectedLayer.inPoint;
             shapeLayer.outPoint = selectedLayer.outPoint;
+            shapeLayer.applyPreset(nullCtrlFFX);
 
         var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
             shapeGroup.name = nullName;
