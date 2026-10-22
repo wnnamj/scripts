@@ -11,88 +11,79 @@ license: this script is provided "as is," without warranty of any kind, expresse
 
 */
 
+
+var project = app.project;
+var comp = app.project.activeItem;
+var nullName = "\u25a3 altNull";
+var selectedLayer = comp.selectedLayers;
+
+var r = 237 / 255;
+var g = 109 / 255;
+var b = 122 / 255;
+
 function newAltNull() {
-
     app.beginUndoGroup("create null alternative");
-
-    var project = app.project;
-    var comp = app.project.activeItem;
-    var nullName = "\u25a3 altNull";
-
-    var selectedLayer = comp.selectedLayers[0];
-    var layerName = selectedLayer.name;
-
-    var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");  
-
-    var r = 237 / 255;
-    var g = 109 / 255;
-    var b = 122 / 255;
 
     if(comp == null) {
         alert("Please select a in a comp!");
         return;
     } else {
-
         comp.openInViewer();
 
-        // generate shape layer
+        function createAltNull (nullLayerName, nullPosValue) {
+            var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");
 
-        var nullPos = selectedLayer.property("Transform").property("Position").value;
+            var shapeLayer = comp.layers.addShape();
+                shapeLayer.guideLayer = true;
+                shapeLayer.name = nullLayerName
+                shapeLayer.shy = true;
+                shapeLayer.label = 14;
+                shapeLayer.applyPreset(nullCtrlFFX);
+                shapeLayer.property("Transform").property("Position").setValue(nullPosValue);
 
-        var shapeLayer = comp.layers.addShape();
-            shapeLayer.name = nullName + "-" + layerName;
-            shapeLayer.guideLayer = true;
-            shapeLayer.shy = true;
-            shapeLayer.label = 14;
-            shapeLayer.moveBefore(selectedLayer);
-            shapeLayer.property("Transform").property("Position").setValue(nullPos);
-            shapeLayer.inPoint = selectedLayer.inPoint;
-            shapeLayer.outPoint = selectedLayer.outPoint;
-            shapeLayer.applyPreset(nullCtrlFFX);
+            var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
+                shapeGroup.name = nullName;
 
-        var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
-            shapeGroup.name = nullName;
+            var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
 
-        // add null controls
+            var nullSize = pathGroup.property("ADBE Vector Rect Size");
+                nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
 
-        // add shape properties
+            var nullPos = pathGroup.property("ADBE Vector Rect Position");
+                nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
 
-        var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
+            var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
+                nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
 
-        var nullSize = pathGroup.property("ADBE Vector Rect Size");
-            nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
+            var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
 
-        var nullPos = pathGroup.property("ADBE Vector Rect Position");
-            nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
+            var strokeCol = strokeGroup.property("ADBE Vector Stroke Color");
+               strokeCol.setValue([r, g, b]);
+            
+            var stroke = strokeGroup.property("ADBE Vector Stroke Width");
+                stroke.setValue(3);
+                stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
 
-        var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
-            nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
+            var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
+                strokeGroupDash.setValue(7);
 
-        // stroke properties
+            app.executeCommand(2387);
+        }
 
-        var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
+        if (comp.selectedLayers.length === 0) {
+            // not selected
+            var compCenter = [comp.width / 2, comp.height / 2];
 
-        var strokeCol = strokeGroup.property("ADBE Vector Stroke Color");
-            strokeCol.setValue([r, g, b]);
-        
-        var stroke = strokeGroup.property("ADBE Vector Stroke Width");
-            stroke.setValue(3);
-            stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
-
-        var strokeGroupDash = strokeGroup.property("ADBE Vector Stroke Dashes").addProperty("ADBE Vector Stroke Dash 1");
-            strokeGroupDash.setValue(7);
-
-        // parent selected layers
-
-        selectedLayer.parent = shapeLayer;
-
-		// cancel out properties expansion
-
-        app.executeCommand(2387);
-
-        app.endUndoGroup();
+            createAltNull(nullName, compCenter);
+            // shapeLayer.moveToBeginning()
+        } else {
+            // selected
+            var nullPos = selectedLayer[0].property("Transform").property("Position").value;
+            var selLayerNull = nullName + "-" + selectedLayer[0].name;
+            createAltNull(selLayerNull, nullPos);
+        }
     }
-
+    app.endUndoGroup();
 }
 
 newAltNull()
