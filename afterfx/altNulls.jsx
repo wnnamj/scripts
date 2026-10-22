@@ -44,6 +44,9 @@ function newAltNull() {
             var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
                 shapeGroup.name = nullName;
 
+            var nullVisibility = shapeGroup.property("ADBE Vector Transform Group").property("ADBE Vector Group Opacity");
+                nullVisibility.expression = 'try{\n\tvar $checkBox = effect("altNull")("visible");\n\tif ($checkBox == 1) 100\n\t\telse 0;\n} catch (e) { value };'
+
             var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
 
             var nullSize = pathGroup.property("ADBE Vector Rect Size");
