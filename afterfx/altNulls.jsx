@@ -43,8 +43,6 @@ function newAltNull() {
             var shapeLayerPos = shapeLayer.property("Transform").property("Position");
                 shapeLayerPos.setValue(nullPosValue);
                 shapeLayerPos.dimensionsSeparated = true;
-                var xPosition = shapeLayerPos.getSeparationFollower(0);  
-                var yPosition = shapeLayerPos.getSeparationFollower(1);  
 
             var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
                 shapeGroup.name = nullName;
