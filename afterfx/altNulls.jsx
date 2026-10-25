@@ -30,18 +30,21 @@ function newAltNull() {
     } else {
         comp.openInViewer();
 
-        function createAltNull (nullLayerName, nullPosValue, nullInPoint, nullOutPoint) {
+        function createAltNull (nullLayerName, nullPosValue, nullInPoint, nullOutPoint, shapeLayerParent) {
             var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");
-
             var shapeLayer = comp.layers.addShape();
                 shapeLayer.guideLayer = true;
                 shapeLayer.name = nullLayerName
                 shapeLayer.shy = true;
                 shapeLayer.label = 14;
                 shapeLayer.applyPreset(nullCtrlFFX);
-                shapeLayer.property("Transform").property("Position").setValue(nullPosValue);
                 shapeLayer.inPoint = nullInPoint;
                 shapeLayer.outPoint = nullOutPoint;
+            var shapeLayerPos = shapeLayer.property("Transform").property("Position");
+                shapeLayerPos.setValue(nullPosValue);
+                shapeLayerPos.dimensionsSeparated = true;
+                var xPosition = shapeLayerPos.getSeparationFollower(0);  
+                var yPosition = shapeLayerPos.getSeparationFollower(1);  
 
             var shapeGroup = shapeLayer.property("Contents").addProperty("ADBE Vector Group");
                 shapeGroup.name = nullName;
@@ -64,7 +67,7 @@ function newAltNull() {
 
             var strokeCol = strokeGroup.property("ADBE Vector Stroke Color");
                 strokeCol.setValue([r, g, b]);
-            
+
             var stroke = strokeGroup.property("ADBE Vector Stroke Width");
                 stroke.setValue(3);
                 stroke.expression = "value / Math.max(length(toComp([0,0]), toComp([0.7071,0.7071])), 0.001);";
@@ -77,7 +80,6 @@ function newAltNull() {
 
         if (comp.selectedLayers.length === 0) {
             var compCenter = [comp.width / 2, comp.height / 2];
-
             createAltNull(nullName, compCenter, 0, comp.duration);
         } else {
             var nullPos = selectedLayer[0].property("Transform").property("Position").value;
