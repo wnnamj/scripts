@@ -11,7 +11,6 @@ license: this script is provided "as is," without warranty of any kind, expresse
 
 */
 
-
 var project = app.project;
 var comp = app.project.activeItem;
 var nullName = "\u25a3 altNull";
@@ -30,7 +29,7 @@ function newAltNull() {
     } else {
         comp.openInViewer();
 
-        function createAltNull (nullLayerName, nullPosValue, nullInPoint, nullOutPoint, shapeLayerParent) {
+        function createAltNull (nullLayerName, nullPosValue, nullInPoint, nullOutPoint) {
             var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");
             var shapeLayer = comp.layers.addShape();
                 shapeLayer.guideLayer = true;
