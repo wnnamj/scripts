@@ -42,4 +42,5 @@ mkdir -p $db'/[05] EXPORTS/TESTS'
 mkdir -p $db'/[XX] ADMIN'
 
 ## open created folder
+
 open -R "$db"
