@@ -33,7 +33,7 @@ function newAltNull() {
             var nullCtrlFFX = new File("~/Documents/Projects/repositories/scripts/afterfx/altNative/altNulls.ffx");
             var shapeLayer = comp.layers.addShape();
                 shapeLayer.guideLayer = true;
-                shapeLayer.name = nullLayerName
+                shapeLayer.name = nullLayerName;
                 shapeLayer.shy = true;
                 shapeLayer.label = 14;
                 shapeLayer.applyPreset(nullCtrlFFX);
@@ -47,18 +47,18 @@ function newAltNull() {
                 shapeGroup.name = nullName;
 
             var nullVisibility = shapeGroup.property("ADBE Vector Transform Group").property("ADBE Vector Group Opacity");
-                nullVisibility.expression = 'try{\n\tvar $checkBox = effect("altNull")("visible");\n\tif ($checkBox == 1) 100\n\t\telse 0;\n} catch (e) { value };'
+                nullVisibility.expression = 'try{\n\tvar $checkBox = effect("altNull")("visible");\n\tif ($checkBox == 1) 100\n\t\telse 0;\n} catch (e) { value };';
 
             var pathGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Shape - Rect");
 
             var nullSize = pathGroup.property("ADBE Vector Rect Size");
-                nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };'
+                nullSize.expression = 'try {\n\t[effect("altNull")("width"), effect("altNull")("height")];\n} catch (e) { value };';
 
             var nullPos = pathGroup.property("ADBE Vector Rect Position");
-                nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };'
+                nullPos.expression = 'try {\n\t[effect("altNull")("offset - x"), effect("altNull")("offset - y")];\n} catch (e) { value };';
 
             var nullRoundness = pathGroup.property("ADBE Vector Rect Roundness");
-                nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };'
+                nullRoundness.expression = 'try {\n\teffect("altNull")("roundess");\n} catch (e) { value };';
 
             var strokeGroup = shapeLayer.property("Contents").property(nullName).property("Contents").addProperty("ADBE Vector Graphic - Stroke");
 
