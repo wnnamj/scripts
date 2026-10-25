@@ -1,14 +1,45 @@
 #!/bin/bash
 
-year=' 2026'
-db=~/Documents/Admin/shortcuts/PROJECTS$year
+db=~/Documents/Projects/work/NEW_PROJECT
 
-mkdir -p "$db/NEW PROJECT"
-mkdir -p "$db/NEW PROJECT/[01] PROJECT FILES/AE JOBS" "NEW PROJECT/[01] PROJECT FILES/AE JOBS/_OLD SAVES" "NEW PROJECT/[01] PROJECT FILES/PREMIERE JOBS" "NEW PROJECT/[01] PROJECT FILES/ILLUSTRATOR"
-mkdir -p "$db/NEW PROJECT/[02] MEDIA/IMAGES" "NEW PROJECT/[02] MEDIA/RAW" "NEW PROJECT/[02] MEDIA/VIDEO"
-mkdir -p "$db/NEW PROJECT/[03] GRAPHICS/ASSETS" "NEW PROJECT/[03] GRAPHICS/FONTS" "NEW PROJECT/[03] GRAPHICS/INSPIRATION" "NEW PROJECT/[03] GRAPHICS/RENDERS"
-mkdir -p "$db/NEW PROJECT/[04] AUDIO/MUSIC" "NEW PROJECT/[04] AUDIO/SOUND EFFECTS" "NEW PROJECT/[04] AUDIO/VOICE/PROCESSED" "NEW PROJECT/[04] AUDIO/VOICE/RAW" "NEW PROJECT/[04] AUDIO/VOICE/SCRATCH"
-mkdir -p "$db/NEW PROJECT/[05] EXPORTS/OFFLINE" "NEW PROJECT/[05] EXPORTS/ONLINE/TV" "NEW PROJECT/[05] EXPORTS/ONLINE/WEB" "NEW PROJECT/[05] EXPORTS/STYLEFRAMES" "NEW PROJECT/[05] EXPORTS/TESTS"
-mkdir -p "$db/NEW PROJECT/[XX] ADMIN"
+## 01 - Project Files
 
-open -R "$db/NEW PROJECT"
+mkdir -p $db'/[01] PROJECT FILES/AE JOBS/_OLD SAVES'
+mkdir -p $db'/[01] PROJECT FILES/ILLUSTRATOR'
+mkdir -p $db'/[01] PROJECT FILES/PREMIERE JOBS'
+
+## 02 - Media
+
+mkdir -p $db'/[02] MEDIA/IMAGES'
+mkdir -p $db'/[02] MEDIA/RAW'
+mkdir -p $db'/[02] MEDIA/VIDEO'
+
+## 03 - Graphics
+
+mkdir -p $db'/[03] GRAPHICS/ASSETS'
+mkdir -p $db'/[03] GRAPHICS/FONTS'
+mkdir -p $db'/[03] GRAPHICS/INSPIRATION'
+mkdir -p $db'/[03] GRAPHICS/RENDERS'
+
+## 04 - Audio
+
+mkdir -p $db'/[04] AUDIO/MUSIC'
+mkdir -p $db'/[04] AUDIO/SOUND EFFECTS'
+mkdir -p $db'/[04] AUDIO/VOICE/PROCESSED'
+mkdir -p $db'/[04] AUDIO/VOICE/RAW'
+mkdir -p $db'/[04] AUDIO/VOICE/SCRATCH'
+
+## 05 - Exports
+
+mkdir -p $db'/[05] EXPORTS/OFFLINE'
+mkdir -p $db'/[05] EXPORTS/ONLINE/TV'
+mkdir -p $db'/[05] EXPORTS/ONLINE/WEB'
+mkdir -p $db'/[05] EXPORTS/STYLEFRAMES'
+mkdir -p $db'/[05] EXPORTS/TESTS'
+
+## XX - Admin
+
+mkdir -p $db'/[XX] ADMIN'
+
+## open created folder
+open -R "$db"
